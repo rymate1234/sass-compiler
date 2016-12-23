@@ -53,7 +53,7 @@ public class ImportNode extends Node implements NodeWithUrlContent {
     }
 
     public boolean isPureCssImport() {
-        return (isURL || uri.endsWith(".css") || uri.startsWith("http://") || hasMediaQueries());
+        return (isURL || uri.endsWith(".css") || uri.startsWith("http://") || uri.startsWith("https://") || hasMediaQueries());
     }
 
     private boolean hasMediaQueries() {
