@@ -145,7 +145,6 @@ public class ScssStylesheet extends Node {
 
         // FIXME Is this actually intended? /John 1.3.2013
         File file = new File(identifier);
-        file = file.getCanonicalFile();
 
         ScssStylesheet stylesheet = documentHandler.getStyleSheet();
         if (parentStylesheet == null) {
