@@ -402,7 +402,7 @@ public class SCSSDocumentHandlerImpl implements SCSSDocumentHandler {
     }
 
     private void log(String msg) {
-        Logger.getGlobal().log(Level.INFO, msg);
+        //Logger.getGlobal().log(Level.INFO, msg);
     }
 
     @Override

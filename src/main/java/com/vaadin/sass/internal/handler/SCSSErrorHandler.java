@@ -25,6 +25,7 @@ import org.w3c.css.sac.ErrorHandler;
 public class SCSSErrorHandler implements ErrorHandler {
 
     private static ThreadLocal<SCSSErrorHandler> current = new ThreadLocal<>();
+    private final Logger logger;
 
     public static void set(SCSSErrorHandler h) {
         current.set(h);
@@ -37,7 +38,8 @@ public class SCSSErrorHandler implements ErrorHandler {
     private boolean errorsDetected = false;
     private boolean warningsAreErrors = true;
 
-    public SCSSErrorHandler() {
+    public SCSSErrorHandler(Logger logger) {
+        this.logger = logger;
     }
 
     @Override
@@ -67,27 +69,27 @@ public class SCSSErrorHandler implements ErrorHandler {
     }
 
     private void log(String msg) {
-        Logger.getGlobal().log(Level.SEVERE, msg);
+        logger.log(Level.SEVERE, msg);
     }
 
     private void log(Exception e) {
-        Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
+        logger.log(Level.SEVERE, e.getMessage(), e);
     }
 
     private void severe(String msg) {
-        Logger.getGlobal().log(Level.SEVERE, msg);
+        logger.log(Level.SEVERE, msg);
     }
 
     private void severe(String msg, Exception e) {
-        Logger.getGlobal().log(Level.SEVERE, msg, e);
+        logger.log(Level.SEVERE, msg, e);
     }
 
     private void warn(String msg) {
-        Logger.getGlobal().log(Level.WARNING, msg);
+        logger.log(Level.WARNING, msg);
     }
 
     private void warn(Exception e) {
-        Logger.getGlobal().log(Level.WARNING, e.getMessage(), e);
+        logger.log(Level.WARNING, e.getMessage(), e);
     }
 
     public void traverseError(Exception e) {
