@@ -63,7 +63,7 @@ import com.vaadin.sass.internal.tree.controldirective.WhileNode;
 public class SCSSDocumentHandlerImpl implements SCSSDocumentHandler {
 
     private final ScssStylesheet styleSheet;
-    Stack<Node> nodeStack = new Stack<Node>();
+    private Stack<Node> nodeStack = new Stack<>();
 
     public SCSSDocumentHandlerImpl() {
         this(new ScssStylesheet());
@@ -402,8 +402,7 @@ public class SCSSDocumentHandlerImpl implements SCSSDocumentHandler {
     }
 
     private void log(String msg) {
-        Logger.getLogger(SCSSDocumentHandlerImpl.class.getName()).log(
-                Level.INFO, msg);
+        Logger.getGlobal().log(Level.INFO, msg);
     }
 
     @Override

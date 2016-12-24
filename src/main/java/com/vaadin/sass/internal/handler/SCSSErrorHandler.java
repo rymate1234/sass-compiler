@@ -24,7 +24,7 @@ import org.w3c.css.sac.ErrorHandler;
 
 public class SCSSErrorHandler implements ErrorHandler {
 
-    private static ThreadLocal<SCSSErrorHandler> current = new ThreadLocal<SCSSErrorHandler>();
+    private static ThreadLocal<SCSSErrorHandler> current = new ThreadLocal<>();
 
     public static void set(SCSSErrorHandler h) {
         current.set(h);
@@ -67,37 +67,31 @@ public class SCSSErrorHandler implements ErrorHandler {
     }
 
     private void log(String msg) {
-        Logger.getLogger(SCSSDocumentHandlerImpl.class.getName()).log(
-                Level.SEVERE, msg);
+        Logger.getGlobal().log(Level.SEVERE, msg);
     }
 
     private void log(Exception e) {
-        Logger.getLogger(SCSSDocumentHandlerImpl.class.getName()).log(
-                Level.SEVERE, e.getMessage(), e);
+        Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
     }
 
     private void severe(String msg) {
-        Logger.getLogger(SCSSDocumentHandlerImpl.class.getName()).log(
-                Level.SEVERE, msg);
+        Logger.getGlobal().log(Level.SEVERE, msg);
     }
 
     private void severe(String msg, Exception e) {
-        Logger.getLogger(SCSSDocumentHandlerImpl.class.getName()).log(
-                Level.SEVERE, msg, e);
+        Logger.getGlobal().log(Level.SEVERE, msg, e);
     }
 
     private void warn(String msg) {
-        Logger.getLogger(SCSSDocumentHandlerImpl.class.getName()).log(
-                Level.WARNING, msg);
+        Logger.getGlobal().log(Level.WARNING, msg);
     }
 
     private void warn(Exception e) {
-        Logger.getLogger(SCSSDocumentHandlerImpl.class.getName()).log(
-                Level.WARNING, e.getMessage(), e);
+        Logger.getGlobal().log(Level.WARNING, e.getMessage(), e);
     }
 
     public void traverseError(Exception e) {
-        severe(null, e);
+        severe("Error: ", e);
         errorsDetected = true;
     }
 
