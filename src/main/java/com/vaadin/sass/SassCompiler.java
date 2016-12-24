@@ -24,6 +24,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.logging.Logger;
 import java.util.zip.GZIPOutputStream;
 
 import com.vaadin.sass.internal.ScssContext;
@@ -85,7 +86,7 @@ public class SassCompiler {
         // You can set the resolver; if none is set, VaadinResolver will be used
         // ScssStylesheet.setStylesheetResolvers(new VaadinResolver());
 
-        SCSSErrorHandler errorHandler = new SCSSErrorHandler();
+        SCSSErrorHandler errorHandler = new SCSSErrorHandler(Logger.getGlobal());
         errorHandler.setWarningsAreErrors(!ignoreWarnings);
         try {
             // Parse stylesheet
