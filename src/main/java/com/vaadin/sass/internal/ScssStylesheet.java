@@ -103,7 +103,7 @@ public class ScssStylesheet extends Node {
     public static ScssStylesheet get(String identifier,
             ScssStylesheet parentStylesheet) throws CSSException, IOException {
         return get(identifier, parentStylesheet, new SCSSDocumentHandlerImpl(),
-                new SCSSErrorHandler());
+                new SCSSErrorHandler(Logger.getGlobal()));
     }
 
     /**
